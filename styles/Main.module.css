@@ -1,0 +1,161 @@
+.section
+{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.container
+{
+  display: grid;
+  grid-template-rows: 60px 60px 50px 50px 60px;
+  grid-template-columns: 100px 100px 100px;
+}
+
+#lamp
+{
+  mix-blend-mode: screen;
+}
+
+#masjid
+{
+  transform: translateY(-5px);
+}
+
+#text
+{
+  position: absolute;
+  top: 50%;
+  right: -100%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 10vw;
+  white-space: nowrap;
+  text-shadow: 0 10px 15px rgba(0,0,0,0.25);
+}
+
+.btn {
+  grid-row: 2/3;
+  grid-column: 1/4;
+  width: 100%;
+  text-decoration: none;
+  padding: 8px 40px;
+  background: #fff;
+  color: #2b1055;
+  font-size: 1.5em;
+  z-index: 15;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+}
+
+.plus
+{
+  grid-row: 1/2;
+  grid-column: 3/4;
+  width: 100%;
+  text-decoration: none;
+  padding: 8px 30px;
+  background: #fff;
+  color: #2b1055;
+  font-size: 1.5em;
+  z-index: 9;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 30px;
+}
+
+.minus
+{
+  grid-row: 1/2;
+  grid-column: 1/2;
+  width: 100%;
+  text-decoration: none;
+  padding: 8px 30px;
+  background: #fff;
+  color: #2b1055;
+  font-size: 1.5em;
+  z-index: 9;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 30px;
+}
+
+.supply
+{
+  grid-row: 3/5;
+  grid-column: 1/4;
+  width: 100%;
+  text-decoration: none;
+  padding: 8px 30px;
+  background: #fff;
+  color: #2b1055;
+  font-size: 1.5em;
+  z-index: 9;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 30px;
+}
+
+.sum
+{
+  grid-row: 5/6;
+  grid-column: 1/4;
+  width: 100%;
+  text-decoration: none;
+  padding: 8px 30px;
+  background: #fff;
+  color: #2b1055;
+  font-size: 1.5em;
+  z-index: 9;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 30px;
+}
+
+.input {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  text-decoration: none;
+  border-color: #fff;
+  background: #fff;
+  color: #000; /* 글씨 색상을 검은색으로 변경 */
+  font-size: 1.5em;
+  z-index: 9;
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;
+}
+
+
+@media (max-width: 992px)
+{
+#stars2
+  {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+.text
+{
+  font-size: 15vw;
+}
+
+}
