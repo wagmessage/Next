@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SaveSnailz from './SaveSnailz.json';
 import type { NextPage } from 'next';
 
-import { formatEther, parseEther } from 'viem';
+import { parseEther } from 'viem';
 
 import {
   useAccount,
@@ -13,7 +13,6 @@ import {
 } from 'wagmi';
 
 import styles from '../styles/Main.module.css';
-import '../styles/Main.module.css';
 
 const Main: NextPage = () => {
   const [mounted, setMounted] = useState<number>(0); // 초기값을 숫자로 설정
@@ -81,51 +80,66 @@ const handleIncrement = () => {
     setMounted(mounted +1);
 };
 
-//useEffect(() => {
-//  const handleScroll = () => {
-//    let value = window.scrollY; // 스크롤 값으로 설정
-//
-//    let starsElement = document.getElementById('stars');
-//    let stars2Element = document.getElementById('stars2');
-//    let moonElement = document.getElementById('moon');
-//    let rockElement = document.getElementById('rock');
-//    let masjidElement = document.getElementById('masjid');
-//    let textElement = document.getElementById('text');
-//
-//
-//    starsElement.style.bottom = value * 0.05 + '%';
-//    stars2Element.style.bottom = value * 0.05 + '%';
-//    moonElement.style.bottom = value * -0.5 + 'px';
-//    rockElement.style.bottom = value * -0.75 + 'px';
-//    masjidElement.style.bottom = value * -0.15 + 'px';
-//    textElement.style.right = -100 + value * 0.5 + '%';
-//    textElement.style.top = 50 + value * 0.1 + '%';
-//
-//  };
-//
-//  window.addEventListener('scroll', handleScroll);
-//
-//  return () => {
-//    window.removeEventListener('scroll', handleScroll);
-//  };
-//}, []);
+useEffect(() => {
+  const handleScroll = () => {
+    let value = window.scrollY;
+
+    const stars = document.getElementById('stars');
+    const stars2 = document.getElementById('stars2');
+    const moon = document.getElementById('moon');
+    const rock = document.getElementById('rock');
+    const masjid = document.getElementById('masjid');
+    const sen = document.getElementById('sen');
+
+    if (stars) {
+      stars.style.bottom = value * 0.05 + '%';
+    }
+
+    if (stars2) {
+      stars2.style.bottom = value * 0.05 + '%';
+    }
+
+    if (moon) {
+      moon.style.bottom = value * -0.5 + 'px';
+    }
+
+    if (rock) {
+      rock.style.bottom = value * -0.75 + 'px';
+    }
+
+    if (masjid) {
+      masjid.style.bottom = value * -0.15 + 'px';
+    }
+
+    if (sen) {
+      sen.style.right = -100 + value * 0.5 + '%';
+      sen.style.top = 50 + value * 0.1 + '%';
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+
 
   return (
   <section className={styles.section}>
     <img src="/images/stars.png" id="stars" alt="stars" className={styles.img}/>
-    <img src="/images/stars2.png" id="stars2" alt="stars2" className={styles.img}/>
+    <img src="/images/stars2.png" id="stars2" alt="stars2" className={`${styles.img} ${styles.stars2}`}/>
     <img src="/images/moon.png" id="moon" alt="moon" className={styles.img}/>
     <img src="/images/rock.png" id="rock" alt="rock" className={styles.img}/>
-    <img src="/images/masjid.png" id="masjid" alt="masjid" className={styles.img}/>
+    <img src="/images/masjid.png" id="masjid" alt="masjid" className={`${styles.img} ${styles.masjid}`}/>
     
    
-    <h2 id="text">Stupid Lee Seo-yong</h2>
+    <h2 id="sen"className={styles.sen}>옥지얌</h2>
     <img src="/images/bottom.png" id="bottom" alt="bottom" className={styles.img}/>
-    <img src="/images/lamp.png" id="lamp" alt="lamp" className={styles.img}/>
+    <img src="/images/lamp.png" id="lamp" alt="lamp" className={`${styles.img} ${styles.lamp}`}/>
     
     {mounted && isConnected && !isMinted && (
       <div className={styles.container}>
-        
         <div
           id="btn"
           className={`${styles.btn} nes-btn is-error`}
@@ -133,11 +147,11 @@ const handleIncrement = () => {
         >  
       Mint Now
       </div>
-      <div className="nes-btn is-disabled supply" id="supply">{Number(totalMinted)} minted so far!</div>
-      <div className="nes-btn is-disabled sum" id="sum">{Number(totalSum)} Ξ </div>
-      <div className="nes-btn is-warning minus" id="minus" onClick={handleDecrement} >-</div>
-      <input readOnly id="name_field" className="nes-input input" type="number" value={mounted} />
-      <div className="nes-btn is-warning plus" id="plus" onClick={handleIncrement} >+</div>
+      <div className={`${styles.supply} nes-btn is-disabled`}>{Number(totalMinted)} minted so far!</div>
+      <div className={`${styles.sum} nes-btn is-disabled`}>{Number(totalSum)} Ξ </div>
+      <div className={`${styles.minus} nes-btn is-warning`} onClick={handleDecrement} >-</div>
+      <input readOnly id="name_field" className={`${styles.input} nes-input`} type="number" value={mounted} />
+      <div className={`${styles.plus} nes-btn is-warning`} onClick={handleIncrement} >+</div>
     </div>
     )}
     

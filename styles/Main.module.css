@@ -20,26 +20,27 @@
 
 .container
 {
+  position: relative;
   display: grid;
   grid-template-rows: 60px 60px 50px 50px 60px;
   grid-template-columns: 100px 100px 100px;
 }
 
-#lamp
+.lamp
 {
   mix-blend-mode: screen;
 }
 
-#masjid
+.masjid
 {
   transform: translateY(-5px);
 }
 
-#text
+.sen
 {
   position: absolute;
   top: 50%;
-  right: -100%;
+  right: -50%;
   transform: translateY(-50%);
   color: #fff;
   font-size: 10vw;
@@ -144,7 +145,7 @@
 
 @media (max-width: 992px)
 {
-#stars2
+.stars2
   {
     display: block;
     width: 100%;
@@ -153,7 +154,7 @@
   }
 
 
-.text
+.sen
 {
   font-size: 15vw;
 }

@@ -3,17 +3,34 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Navigation.module.css'; 
 import "nes.css/css/nes.min.css";
+import React, { useEffect, useState } from 'react';
 
 const Home: NextPage = () => {
+  const [isMenuActive, setIsMenuActive] = useState(false);
 
-    return (
-      <div className={styles.header}>
-        <div className={styles.logo}/>
-          <div className={styles.toggle}></div>
-            <ul className={styles.navigation}>
-              <li><a className="nes-btn" href="#">Home</a></li>
-              <li><a className="nes-btn" href="#">About</a></li>
-              <li><a className="nes-btn" href="#">Schedule</a></li>
+  useEffect(() => {
+    const toggleMenu = document.querySelector(`.${styles.toggle}`);
+    const navigation = document.querySelector(`.${styles.navigation}`);
+
+    const handleToggleMenu = () => {
+      setIsMenuActive(prevMenuActive => !prevMenuActive);
+    };
+
+    toggleMenu?.addEventListener('click', handleToggleMenu);
+
+    return () => {
+      toggleMenu?.removeEventListener('click', handleToggleMenu);
+    };
+  }, []);
+
+  return (
+    <div className={styles.header}>
+      <div className={styles.logo}>빵빵아</div>
+      <div className={`${styles.toggle} ${isMenuActive ? styles.active : ''}`} />
+      <ul className={`${styles.navigation} ${isMenuActive ? styles.active : ''}`}>
+              <li className={styles.li}><a className={`${styles.a} nes-btn`} href="#">Home</a></li>
+              <li className={styles.li}><a className={`${styles.a} nes-btn`} href="#">About</a></li>
+              <li className={styles.li}><a className={`${styles.a} nes-btn`} href="#">Schedule</a></li>
               <ConnectButton.Custom>
         {({
           account,
@@ -51,7 +68,7 @@ const Home: NextPage = () => {
                     <button 
                     onClick={openConnectModal} 
                     type="button"
-                    className="nes-btn is-primary">
+                    className={`${styles.button} nes-btn is-primary`}>
                       Connect
                     </button>
                   );
@@ -64,7 +81,7 @@ const Home: NextPage = () => {
                     <button 
                     onClick={openAccountModal} 
                     type="button"
-                    className="nes-btn is-success">
+                    className={`${styles.button} nes-btn is-success`}>
                       Connected
                     </button>
                   </div>
